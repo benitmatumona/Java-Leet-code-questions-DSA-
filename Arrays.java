@@ -4,8 +4,7 @@ import java.util.HashSet;
 public class Arrays{
 
     public static void main(String[] args) {
-        int[] test = {1, 7, 3, 2};
-        System.out.println(containsDuplicates(new int[] {1, 2, 3, 4, 5, 6, 7}));
+        System.out.println(containsDuplicates2(new int[] {1, 2, 3, 1, 4, 5, 6, 7}, 4));
     }
 
     public static int[] twoSum(int[] nums, int target) {
@@ -27,4 +26,14 @@ public class Arrays{
         return false;
     }
     
+    public static boolean containsDuplicates2(int[] nums, int target) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (map.get(nums[i]) == null) map.put(nums[i], i);
+            else if(Math.abs(i - map.get(nums[i])) < target){
+                return true;
+            }
+        }
+        return false;
+    }
 }
