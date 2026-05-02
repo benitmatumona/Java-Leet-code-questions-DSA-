@@ -11,14 +11,10 @@ public class Arrays{
         HashMap<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             int difference = target - nums[i];
-            if (map.get(difference) != null) {
-                int[] result = {i, map.get(difference)};
-                return result;            
-            }else {
-                map.put(nums[i], i);
-            }
+            if (map.get(difference) != null) return new int[] {i, map.get(difference)};            
+            else  map.put(nums[i], i);
         }
-        return null;
+        return new int[] {};
     }
     
 }
