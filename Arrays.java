@@ -39,14 +39,14 @@ public class Arrays{
 
     public static boolean validAnagram(String a, String b) {
         if (a.length() != b.length()) return false;
-        HashMap<Character, Integer> mapOfA = new HashMap<>();
-        HashMap<Character, Integer> mapOfB = new HashMap<>();
+        HashMap<Character, Integer> mapOf = new HashMap<>();
         for (int i = 0; i < a.length(); i++) {
             char charA = a.charAt(i);
             char charB = b.charAt(i);
-            mapOfA.put(charA, mapOfA.getOrDefault(charA, 0) + 1);
-            mapOfB.put(charB, mapOfB.getOrDefault(charB, 0) + 1);
+            mapOf.put(charA, mapOf.getOrDefault(charA, 0) + 1);
+            mapOf.put(charB, mapOf.getOrDefault(charB, 0) - 1);
         }
-        return mapOfA.equals(mapOfB);
+        for (int value: mapOf.values()) if (value != 0) return false; 
+        return true;
     }
 }
