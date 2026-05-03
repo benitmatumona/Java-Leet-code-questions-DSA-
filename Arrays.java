@@ -39,7 +39,16 @@ public class Arrays{
 
     public static boolean validAnagram(String a, String b) {
         if (a.length() != b.length()) return false;
-        for (int i = 0; i < a.length(); i++) if (!b.contains(a.charAt(i) + " ")) return false;
-        return true;
+        HashMap<Character, Integer> mapOfA = new HashMap<>();
+        HashMap<Character, Integer> mapOfB = new HashMap<>();
+        for (int i = 0; i < a.length(); i++) {
+            char charA = a.charAt(i);
+            char charB = b.charAt(i);
+            if (mapOfA.get(charA) != null) mapOfA.put(charA, mapOfA.get(charA) + 1);
+            else mapOfA.put(charA, 0);
+            if (mapOfB.get(charB) != null) mapOfB.put(charB, mapOfB.get(charB) + 1);
+            else mapOfB.put(charB, 0);
+        }
+        return mapOfA.equals(mapOfB);
     }
 }
