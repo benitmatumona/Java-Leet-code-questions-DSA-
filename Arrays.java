@@ -5,6 +5,7 @@ public class Arrays{
 
     public static void main(String[] args) {
         System.out.println(containsDuplicates2(new int[] {1, 2, 3, 1, 4, 5, 6, 7}, 3));
+        System.out.println(validAnagram("abcd", "dbac"));
     }
 
     public static int[] twoSum(int[] nums, int target) {
@@ -34,5 +35,11 @@ public class Arrays{
             if (set.size() > target) set.remove(nums[i - target]);
         }
         return false;
+    }
+
+    public static boolean validAnagram(String a, String b) {
+        if (a.length() != b.length()) return false;
+        for (int i = 0; i < a.length(); i++) if (!b.contains(a.charAt(i) + " ")) return false;
+        return true;
     }
 }
