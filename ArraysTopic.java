@@ -63,7 +63,7 @@ public class ArraysTopic{
             for(char letter: word.toCharArray())
                 indexs[letter - 'a']++;
 
-            StringBuilder code = new StringBuilder("");
+            StringBuilder code = new StringBuilder();
             for (int number: indexs) {
                 code.append("#");
                 code.append(number);
