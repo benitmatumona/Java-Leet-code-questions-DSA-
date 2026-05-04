@@ -1,11 +1,15 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 
-public class Arrays{
+public class ArraysTopic{
 
     public static void main(String[] args) {
         System.out.println(containsDuplicates2(new int[] {1, 2, 3, 1, 4, 5, 6, 7}, 3));
         System.out.println(validAnagram("abcd", "dbac"));
+        System.out.println(groupAnagrams(new String[] {"aba", "aab", "ab", "b", "ba"}));
     }
 
     public static int[] twoSum(int[] nums, int target) {
@@ -46,5 +50,29 @@ public class Arrays{
         }
         for (int value: letters) if (value != 0) return false; 
         return true;
+    }
+
+    public static List<List<String>> groupAnagrams(String[] words) {
+        if (words.length == 0) return new ArrayList<>();
+
+        int[] indexs = new int[26];
+        HashMap<String, List<String>> map = new HashMap<>(); 
+        
+        for (String word: words) {
+            Arrays.fill(indexs, 0);
+            for(char letter: word.toCharArray())
+                indexs[letter - 'a']++;
+
+            StringBuilder code = new StringBuilder("");
+            for (int number: indexs) {
+                code.append("#");
+                code.append(number);
+            }
+            
+            String key = code.toString();
+            map.computeIfAbsent(key, value -> new ArrayList<>()).add(word);
+        }
+        
+    return new ArrayList<>(map.values());         
     }
 }
